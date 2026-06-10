@@ -1,0 +1,5 @@
+PC_START_ADDRESS    : integer := 4194304;
+DATA_WIDTH          : integer := 32;
+INST_WIDTH          : integer := 64;
+SYNTHESIS           : boolean := false;
+ISSUE_WIDTH         : natural := 2

@@ -1,0 +1,59 @@
+
+##############################################
+# Settings for Shift Register example
+##############################################
+
+# Source files
+design_path: "examples/shift_register_chisel"
+design_path_whitelist: ['project', 'src', 'build.sbt'] # path/pattern of what should be copied from design_path
+design_path_blacklist: [] # path/pattern of what should NOT be copied from design_path
+
+# Generate the rtl (from chisel for example)
+generate_rtl: Yes
+generate_command: "sbt 'runMain ShiftRegister --o=rtl'" # this requires sbt and firtool
+generate_output: "rtl" # path of the generated rtl
+
+# Generated design settings
+top_level_file: "ShiftRegister.sv"
+top_level_module: "ShiftRegister"
+clock_signal: "clock"
+reset_signal: "reset"
+
+# delimiters for parameter files
+use_parameters: Yes
+param_target_file: "src/main/scala/ShiftRegister.scala"
+start_delimiter: "new ShiftRegister("
+stop_delimiter: ")"
+
+# Default frequencies (in MHz)
+fmax_synthesis:
+  lower_bound: 50
+  upper_bound: 1500
+custom_freq_synthesis:
+  list: [50, 100]
+
+# Optional target-specific frequencies (in MHz)
+xc7a100t-csg324-1:
+  fmax_synthesis:
+    lower_bound: 650
+    upper_bound: 1000
+  custom_freq_synthesis:
+    list: [50, 100]
+xc7k70t-fbg676-2:
+  fmax_synthesis:
+    lower_bound: 450
+    upper_bound: 2500
+  custom_freq_synthesis:
+    list: [50, 100]
+XFAB180CMOS:
+  fmax_synthesis:
+    lower_bound: 200
+    upper_bound: 1000
+  custom_freq_synthesis:
+    list: [50, 100]
+AMS350CMOS:
+  fmax_synthesis:
+    lower_bound: 50
+    upper_bound: 500
+  custom_freq_synthesis:
+    list: [50, 100]
